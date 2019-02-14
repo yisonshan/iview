@@ -111,7 +111,12 @@
             // default by css: 8px 16px
             padding: {
                 type: String
-            }
+            },
+            // 增加模态特性
+            modal: {
+                type: Boolean,
+                default: false,
+            },
         },
         data () {
             return {
@@ -194,18 +199,20 @@
                 if (this.transfer) this.disableCloseUnderTransfer = true;
             },
             handleClose () {
-                if (this.disableCloseUnderTransfer) {
-                    this.disableCloseUnderTransfer = false;
-                    return false;
-                }
-                if (this.confirm) {
+                if (!this.modal) {
+                    if (this.disableCloseUnderTransfer) {
+                        this.disableCloseUnderTransfer = false;
+                        return false;
+                    }
+                    if (this.confirm) {
+                        this.visible = false;
+                        return true;
+                    }
+                    if (this.trigger !== 'click') {
+                        return false;
+                    }
                     this.visible = false;
-                    return true;
                 }
-                if (this.trigger !== 'click') {
-                    return false;
-                }
-                this.visible = false;
             },
             handleFocus (fromInput = true) {
                 if (this.trigger !== 'focus' || this.confirm || (this.isInput && !fromInput)) {
