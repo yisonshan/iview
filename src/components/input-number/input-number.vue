@@ -86,7 +86,7 @@
             },
             value: {
                 type: Number,
-                default: 1
+                default: null,
             },
             size: {
                 validator (value) {
