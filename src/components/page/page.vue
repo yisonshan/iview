@@ -329,9 +329,9 @@
         },
         mounted () {
             if (this.cachePageSize && this.cacheKey !== null) {
-                const pageSize = window.localStorage.getItem(this.pageSizeKey);
-                if (this.pageSizeOpts.includes(pageSize)) {
-                    this.currentPageSize = pageSize;
+                let pageSize = window.localStorage.getItem(this.pageSizeKey);
+                if (pageSize && this.pageSizeOpts.includes(parseInt(pageSize))) {
+                    this.currentPageSize = parseInt(pageSize);
                 }
             }
         }
