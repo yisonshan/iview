@@ -145,7 +145,7 @@
                 type: String,
                 default: ''
             },
-            key: {
+            cacheKey: {
                 type: String,
                 default: ''
             },
@@ -239,8 +239,8 @@
                 ];
             },
             pageSizeKey() {
-                if (this.cachePageSize && this.key !== null) {
-                    return `pageSize_${this.key}`;
+                if (this.cachePageSize && this.cacheKey !== null) {
+                    return `pageSize_${this.cacheKey}`;
                 } else {
                     return null;
                 }
@@ -288,7 +288,7 @@
                 this.currentPageSize = pageSize;
                 this.$emit('on-page-size-change', pageSize);
                 this.changePage(1);
-                if (this.cachePageSize && this.key !== null) {
+                if (this.cachePageSize && this.cacheKey !== null) {
                     window.localStorage.setItem(this.pageSizeKey, pageSize);
                 }
             },
@@ -328,7 +328,7 @@
             }
         },
         mounted () {
-            if (this.cachePageSize && this.key !== null) {
+            if (this.cachePageSize && this.cacheKey !== null) {
                 const pageSize = window.localStorage.getItem(this.pageSizeKey);
                 if (this.pageSizeOpts.includes(pageSize)) {
                     this.currentPageSize = pageSize;
