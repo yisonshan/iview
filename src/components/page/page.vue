@@ -144,6 +144,14 @@
             nextText: {
                 type: String,
                 default: ''
+            },
+            name: {
+                type: String,
+                default: ''
+            },
+            cachePageSize: {
+                type: Boolean,
+                default: false
             }
         },
         data () {
@@ -229,6 +237,13 @@
                         [`${prefixCls}-item-active`]: this.currentPage === this.allPages
                     }
                 ];
+            },
+            pageSizeKey() {
+                if (this.cachePageSize && this.name !== null) {
+                    return `pageSize_${this.name}`;
+                } else {
+                    return null;
+                }
             }
         },
         methods: {
@@ -273,6 +288,9 @@
                 this.currentPageSize = pageSize;
                 this.$emit('on-page-size-change', pageSize);
                 this.changePage(1);
+                if (this.cachePageSize && this.name !== null) {
+                    window.localStorage.setItem(this.pageSizeKey, pageSize);
+                }
             },
             onPage (page) {
                 this.changePage(page);
@@ -306,6 +324,14 @@
 
                     e.target.value = page;
                     this.changePage(page);
+                }
+            }
+        },
+        mounted () {
+            if (this.cachePageSize && this.name !== null) {
+                const pageSize = window.localStorage.getItem(this.pageSizeKey);
+                if (this.pageSizeOpts.includes(pageSize)) {
+                    this.currentPageSize = pageSize;
                 }
             }
         }
