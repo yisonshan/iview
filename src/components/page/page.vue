@@ -326,14 +326,6 @@
                     this.changePage(page);
                 }
             }
-        },
-        mounted () {
-            if (this.cachePageSize && this.cacheKey !== null) {
-                let pageSize = window.localStorage.getItem(this.pageSizeKey);
-                if (pageSize && this.pageSizeOpts.includes(parseInt(pageSize))) {
-                    this.currentPageSize = parseInt(pageSize);
-                }
-            }
         }
     };
 </script>
