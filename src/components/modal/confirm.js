@@ -166,8 +166,11 @@ Modal.newInstance = properties => {
                 if (this.loading) {
                     this.buttonLoading = true;
                 } else {
-                    this.$children[0].visible = false;
-                    this.remove();
+                    if (this.autoClose) {
+                        this.$children[0].visible = false;
+                        this.remove();
+                    }
+                    
                 }
                 this.onOk();
             },
