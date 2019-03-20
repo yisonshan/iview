@@ -122,6 +122,10 @@
                 type: Number,
                 default: 1000
             },
+            autoClose: {
+                type: Boolean,
+                default: true
+            }
         },
         data () {
             return {
@@ -252,7 +256,9 @@
                 if (this.loading) {
                     this.buttonLoading = true;
                 } else {
-                    this.visible = false;
+                    if (this.autoClose) {
+                        this.visible = false;
+                    }
                     this.$emit('input', false);
                 }
                 this.$emit('on-ok');
