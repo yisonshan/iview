@@ -24,7 +24,7 @@ Modal.newInstance = properties => {
             buttonLoading: false,
             scrollable: false,
             closable: false,
-            autoClose: false
+            autoClose: true
         }),
         render (h) {
             let footerVNodes = [];
@@ -102,7 +102,8 @@ Modal.newInstance = properties => {
                 props: Object.assign({}, _props, {
                     width: this.width,
                     scrollable: this.scrollable,
-                    closable: this.closable
+                    closable: this.closable,
+                    autoClose: this.autoClose
                 }),
                 domProps: {
                     value: this.visible
@@ -244,6 +245,10 @@ Modal.newInstance = properties => {
 
             if ('onCancel' in props) {
                 modal.$parent.onCancel = props.onCancel;
+            }
+
+            if ('autoClose' in props) {
+                modal.$parent.autoClose = props.autoClose;
             }
 
             if ('onOk' in props) {
