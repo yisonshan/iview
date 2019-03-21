@@ -257,7 +257,7 @@
                     this.buttonLoading = true;
                 } else {
                     if (this.autoClose) {
-                        this.visible = false;
+                        // this.visible = false;
                     }
                     this.$emit('input', false);
                 }
