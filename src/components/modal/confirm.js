@@ -23,7 +23,8 @@ Modal.newInstance = properties => {
             loading: false,
             buttonLoading: false,
             scrollable: false,
-            closable: false
+            closable: false,
+            autoClose: false
         }),
         render (h) {
             let footerVNodes = [];
