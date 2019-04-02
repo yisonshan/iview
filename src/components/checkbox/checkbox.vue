@@ -54,7 +54,7 @@
                 default: false
             },
             label: {
-                type: [String, Number, Boolean]
+                type: [String, Number, Boolean, Object]
             },
             indeterminate: {
                 type: Boolean,
