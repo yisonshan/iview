@@ -25,7 +25,7 @@
         mixins: [ Emitter ],
         props: {
             value: {
-                type: [String, Number, Boolean],
+                type: [String, Number, Boolean, Object],
                 default: false
             },
             trueValue: {
