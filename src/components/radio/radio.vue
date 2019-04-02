@@ -37,7 +37,7 @@
                 default: false
             },
             label: {
-                type: [String, Number]
+                type: [String, Number, Object]
             },
             disabled: {
                 type: Boolean,
