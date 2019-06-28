@@ -186,8 +186,13 @@
             },
             precisionValue () {
                 // can not display 1.0
-                if(!this.currentValue) return this.currentValue;
-                return this.precision ? this.currentValue.toFixed(this.precision) : this.currentValue;
+                // if(!this.currentValue) return this.currentValue;
+                // return this.precision ? this.currentValue.toFixed(this.precision) : this.currentValue;
+                let arr = (this.currentValue + '').split('.');
+                if (this.precision && arr[1] && this.precision < arr[1].length) {
+                  return this.currentValue.toFixed(this.precision);
+                }
+                return this.currentValue;
             },
             formatterValue () {
                 if (this.formatter && this.precisionValue !== null) {
